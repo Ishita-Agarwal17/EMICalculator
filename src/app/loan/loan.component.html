@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="spacer">
+    <div class="row">
+      <div class="col-lg-8  col-lg-offset-1">
+        <div>
+
+          <div class="form-group mb-4">
+            <div class="col-md-12">
+              <span class="left-title">
+                Home Loan Amount
+              </span>
+              <input type="text" style="width:44%;float:right;" class="form-control" (blur)="tbupdate(0)"
+                [(ngModel)]="query.amount" placeholder="Loan Amount" />
+
+
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <div class="col-md-12">
+              <span class="left-title">
+                Interest Rate
+              </span>
+              <input type="text" style="width:44%;float:right;" class="form-control" (blur)="tbupdate(1)"
+                placeholder="Interest Rate" [(ngModel)]="query.interest" />
+
+            </div>
+
+
+          </div>
+          <div class="form-group mb-4">
+            <div class="col-md-12">
+              <span class="left-title">Loan Tenure</span>
+              <input type="text" style="width:44%;float:right;" class="form-control" (blur)="tbupdate(2)"
+                placeholder="Loan Tenure in Yr" [(ngModel)]="query.tenureYr">
+              
+            </div>
+          </div>
+          <div class="container">
+            <div class="ro">
+
+              <div class="co" style="text-align: center;">
+                <h4 style="font-size: 16px;
+                color: #666;
+                margin-top: 1rem;">
+                  Loan EMI
+                </h4>
+                <span class="result">
+                  {{result.emi || "--"}}
+                </span>
+              </div>
+
+
+              <div class="co" style="text-align: center;">
+                <h4  >
+                  Total Interest Payable
+                </h4>
+                <span class="result">
+                  {{result.interest || "--"}}
+                </span>
+              </div>
+
+              <div class="co" style="text-align: center;">
+                <h4 >
+                  Total Payment
+                </h4>
+                <h4>
+                  (Principal + Interest)
+                </h4>
+                <span class="result">
+                  {{result.total || "--"}}
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Year</th>
+          <th scope="col">Principal (A)</th>
+          <th scope="col">Interest (B)</th>
+          <th scope="col">Total Payment (A+B)</th>
+          <th scope="col">Balance</th>
+          <th scope="col">Loan paid to date</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of showTableData">
+          <td>{{data.year}}</td>
+          <td>{{data.Principal}}</td>
+          <td>{{data.Interest}}</td>
+          <td>{{data.Total}}</td>
+          <td>{{data.Balance}}</td>
+          <td>{{data.LoanPaidToDate}}</td>
+
+        </tr>
+      </tbody>
+    </table>
